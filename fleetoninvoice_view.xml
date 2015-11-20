@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <!-- Add it to the form -->
+    <record id="view_form_fleetoninvoice_form_inherited" model="ir.ui.view">
+      <field name="name">account.invoice.form.inherit</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_form" />
+      <field name="arch" type="xml">
+        <field name="partner_id" position="after">
+          <field name="fleet_invoice_id" />
+        </field>
+      </field>
+    </record>
+    <!-- add it to the list -->
+    <record id="view_tree_fleetoninvoice_inherited" model="ir.ui.view">
+      <field name="name">account.invoice.tree.inherit</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_tree" />
+      <field name="arch" type="xml">
+        <field name="partner_id" position="after">
+          <field name="fleet_invoice_id" />
+        </field>
+        <field name="fleet_invoice_id" position="after">
+          <field name="fleet_invoice_odometer" />
+        </field>
+      </field>
+    </record>
+  </data>
+</openerp>
