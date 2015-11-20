@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
   <data>
-    <!-- Add it to the form -->
+    <!-- Add it to the form. -->
     <record id="view_form_fleetoninvoice_form_inherited" model="ir.ui.view">
       <field name="name">account.invoice.form.inherit</field>
       <field name="model">account.invoice</field>
@@ -12,17 +12,31 @@
         </field>
       </field>
     </record>
-    <!-- add it to the list -->
+    <!-- Add it to the list. -->
     <record id="view_tree_fleetoninvoice_inherited" model="ir.ui.view">
       <field name="name">account.invoice.tree.inherit</field>
       <field name="model">account.invoice</field>
       <field name="inherit_id" ref="account.invoice_tree" />
       <field name="arch" type="xml">
+        <!-- Show the car information. -->
         <field name="partner_id" position="after">
           <field name="fleet_invoice_id" />
         </field>
+        <!-- Also show the odometer status. -->
         <field name="fleet_invoice_id" position="after">
           <field name="fleet_invoice_odometer" />
+        </field>
+      </field>
+    </record>
+    <!-- Add the search functions. -->
+    <record id="view_filter_fleetoninvoice_inherited" model="ir.ui.view">
+      <field name="name">account.invoice.tree.inherit</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.view_account_invoice_filter" />
+      <field name="arch" type="xml">
+        <!-- Filter by car. -->
+        <field name="partner_id" position="after">
+          <field name="fleet_invoice_id" />
         </field>
       </field>
     </record>
