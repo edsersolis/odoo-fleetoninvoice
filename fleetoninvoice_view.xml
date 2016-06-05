@@ -8,7 +8,9 @@
       <field name="inherit_id" ref="account.invoice_form" />
       <field name="arch" type="xml">
         <field name="partner_id" position="after">
-          <field name="fleet_invoice_id" />
+          <field name="fleet_invoice_id" invisible="1" />
+          <field name="fleet_invoice_odometer" />
+          <field name="fleet_invoice_real_odometer" />
         </field>
       </field>
     </record>
@@ -18,12 +20,9 @@
       <field name="model">account.invoice</field>
       <field name="inherit_id" ref="account.invoice_tree" />
       <field name="arch" type="xml">
-        <!-- Show the car information. -->
+        <!-- Also show the odometer status. -->
         <field name="partner_id" position="after">
           <field name="fleet_invoice_id" />
-        </field>
-        <!-- Also show the odometer status. -->
-        <field name="fleet_invoice_id" position="after">
           <field name="fleet_invoice_odometer" />
         </field>
       </field>
